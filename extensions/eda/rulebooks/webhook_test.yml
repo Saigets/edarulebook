@@ -9,7 +9,7 @@
     - name: Run playbook
       condition: >-
         event.payload is defined
-        event.payload.playbook is defined
+        and event.payload.playbook is defined
         and event.payload.playbook
       action:
         run_playbook:
