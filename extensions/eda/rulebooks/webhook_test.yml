@@ -6,7 +6,16 @@
         host: 0.0.0.0
         port: '{{ webhook_port | default(5001) }}'
   rules:
-    - name: debug
+    - name: Run playbook
+      condition: >-
+        event.payload is defined
+        event.payload.playbook is defined
+        and event.payload.playbook
+      action:
+        run_playbook:
+          name: playbook1.yml
+    - name: Print event
       condition: event.payload is defined
       action:
-        debug:
+        print_event:
+          pretty: true

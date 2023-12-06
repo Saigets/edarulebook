@@ -1,0 +1,10 @@
+---
+- name: Play 1
+  hosts: localhost
+  tasks:
+    - name: Task 1
+      ansible.builtin.debug:
+        msg: Heyhop
+    - name: Task should be executed on
+      ansible.builtin.debug:
+        var: ansible_eda.event.payload.host_host
