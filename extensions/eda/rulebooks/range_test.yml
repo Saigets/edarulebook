@@ -1,0 +1,19 @@
+---
+- name: Range test
+  hosts: all
+  sources:
+    - ansible.eda.range:
+        limit: 15
+  rules:
+    - name: Say Hello
+      condition: event.i == 5
+      action:
+        debug:
+      # action:
+      #   run_playbook:
+      #     name: ansible.eda.hello
+    # - name: debug
+    #   condition: event.payload is defined
+    #   action:
+    #     debug:
+## ansible-rulebook --rulebook range_test.yml --print-events
